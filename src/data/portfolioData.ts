@@ -47,12 +47,12 @@ export const RESUME_DATA = {
       de: "Werkstudent: KI & Machine Learning | Softwareentwicklung | IT-Projektmanagement | Cloud & DevOps"
     },
     bio: {
-      en: "Master's student in Artificial Intelligence at OTH Amberg-Weiden actively seeking a Working Student (Werkstudent) position in Germany. Combines proven engineering vigor as nationwide hackathon champion (Smart India Hackathon 2024 winner), practical industry Agile PM experience delivering 4+ sprints at CourseVita, and published peer-reviewed AI/NLP research. Available immediately for up to 20 hours/week during semester and up to 40 hours/week in semester breaks (on-site in Bavaria, hybrid, or remote nationwide).",
-      de: "Master-Student im Bereich Künstliche Intelligenz an der OTH Amberg-Weiden, aktiv auf der Suche nach einer Werkstudentenstelle in Deutschland (KI/ML, Full-Stack Softwareentwicklung, IT-Projektmanagement oder Cloud). Bundessieger des Smart India Hackathon 2024, Praxiserfahrung als Agile PM Intern bei CourseVita (4+ Sprints, 25% Velocity-Steigerung) sowie begutachtete wissenschaftliche Publikation. Ab sofort verfügbar für bis zu 20 Std./Woche (bis zu 40 Std./Woche in den Semesterferien) vor Ort in Bayern, hybrid oder remote bundesweit."
+      en: "Hi there! I'm a Master's student in Artificial Intelligence at OTH Amberg-Weiden, currently looking for a working student role in Germany. I enjoy working on hands-on AI/ML topics, full-stack software development, and collaborative agile teamwork. I'm always curious, eager to learn from experienced teammates, and excited to contribute wherever I can. Feel free to reach out—I'd love to connect and chat!",
+      de: "Hallo! Ich bin Masterstudent im Bereich Künstliche Intelligenz an der OTH Amberg-Weiden und suche nach einer Werkstudentenstelle in Deutschland. Ich begeistere mich für praxisnahe KI/ML-Themen, Softwareentwicklung und agile Teamarbeit. Ich lerne gerne von erfahrenen Kollegen, packe motiviert mit an und freue mich über jede Gelegenheit, mich einzubringen. Schreiben Sie mir gerne – ich freue mich auf den Austausch!"
     },
     quote: {
-      en: "“Words are, in my not-so-humble opinion, our most inexhaustible source of magic.” — Albus Dumbledore",
-      de: "„Worte sind, meiner nicht so bescheidenen Meinung nach, unsere unerschöpflichste Quelle der Magie.“ — Albus Dumbledore"
+      en: "“It is our choices that show what we truly are, far more than our abilities.” — Albus Dumbledore",
+      de: "„Viel mehr als unsere Fähigkeiten sind es unsere Entscheidungen, die zeigen, wer wir wirklich sind.“ — Albus Dumbledore"
     }
   },
 

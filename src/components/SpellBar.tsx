@@ -45,8 +45,8 @@ export const SpellBar: React.FC<SpellBarProps> = ({
         }
         onSpellNotification(
           lang === 'en'
-            ? '⚡ Accio Werkstudent! Summoning Recruiter Working Student Portal'
-            : '⚡ Accio Werkstudent! Recruiter- & Werkstudentenportal herbeigerufen'
+            ? '⚡ Accio Werkstudent! Navigating to Working Student details'
+            : '⚡ Accio Werkstudent! Zu den Werkstudenten-Details navigiert'
         );
         break;
 
@@ -141,7 +141,7 @@ export const SpellBar: React.FC<SpellBarProps> = ({
       id: 'werkstudent',
       name: 'Accio Werkstudent',
       icon: Briefcase,
-      hint: lang === 'en' ? 'Summon Recruiter Portal & Working Student Availability' : 'Recruiter- & Werkstudentenportal rufen',
+      hint: lang === 'en' ? 'Explore Working Student Roles & Availability' : 'Werkstudenten-Bereich anzeigen',
       active: false,
       color: 'hover:border-emerald-400 hover:text-emerald-300 font-bold bg-[#142319]/80 border-[#10b981]/50 text-[#34d399]',
     },

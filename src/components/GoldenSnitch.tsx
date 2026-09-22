@@ -100,7 +100,7 @@ export const GoldenSnitch: React.FC<GoldenSnitchProps> = ({
             </div>
 
             <span className="inline-block px-3 py-1 rounded-full bg-[#ffd700]/15 border border-[#ffd700]/50 text-[#ffd700] font-cinzel text-xs font-bold mb-2">
-              +150 {lang === 'en' ? 'Points to Your Hiring Team!' : 'Punkte für Ihr Team!'}
+              +150 {lang === 'en' ? 'Points for Your Discovery!' : 'Punkte fürs Entdecken!'}
             </span>
 
             <h3 className="font-cinzel text-2xl font-bold text-[#f5ede0] mb-2">
@@ -109,38 +109,42 @@ export const GoldenSnitch: React.FC<GoldenSnitchProps> = ({
 
             <p className="text-sm font-parchment text-[#c4b59d] mb-6 leading-relaxed">
               {lang === 'en'
-                ? 'Your seeker reflexes are exceptional. You have unlocked Sai Surya Alla’s direct fast-track working student dispatch. Schedule an interview before other companies seize this high-caliber candidate!'
-                : 'Hervorragende Sucher-Reflexe! Sie haben Sai Surya Allas Fast-Track-Empfehlung freigeschaltet. Vereinbaren Sie ein Gespräch für eine Werkstudentenstelle, bevor andere Firmen zugreifen!'}
+                ? "Nice catch! Thanks so much for taking the time to explore my Hogwarts portfolio. I'm currently looking for a working student role where I can learn, help out, and grow with a great team. If you'd like to chat or have questions, feel free to drop me a quick note anytime!"
+                : 'Schöner Fang! Vielen Dank, dass Sie sich Zeit für mein Hogwarts-Portfolio nehmen. Ich suche aktuell nach einer Werkstudentenstelle, bei der ich mit anpacken, von einem tollen Team lernen und wachsen kann. Wenn Sie Fragen haben oder sich austauschen möchten, schreiben Sie mir jederzeit gerne!'}
             </p>
 
             {/* Candidate Fast-Facts Box */}
             <div className="bg-[#10121e] p-4 rounded-xl border border-[#393e5e] text-left text-xs space-y-2 mb-6 font-parchment">
               <div className="flex items-center justify-between text-[#e5ded1]">
-                <span className="text-[#a09480]">Kandidat / Candidate:</span>
-                <span className="font-bold text-[#ffd700]">Sai Surya Alla (M.Sc. AI)</span>
+                <span className="text-[#a09480]">{lang === 'en' ? 'Name:' : 'Name:'}</span>
+                <span className="font-bold text-[#ffd700]">Sai Surya Alla</span>
               </div>
               <div className="flex items-center justify-between text-[#e5ded1]">
-                <span className="text-[#a09480]">Rolle / Role:</span>
-                <span className="font-bold text-[#34d399]">Working Student (Werkstudent)</span>
+                <span className="text-[#a09480]">{lang === 'en' ? 'Study Program:' : 'Studiengang:'}</span>
+                <span className="text-[#e5ded1]">M.Sc. Artificial Intelligence (OTH Amberg-Weiden)</span>
               </div>
               <div className="flex items-center justify-between text-[#e5ded1]">
-                <span className="text-[#a09480]">Verfügbarkeit / Availability:</span>
-                <span className="font-bold text-[#38bdf8]">Sofort / Immediate (Bayern & Remote)</span>
+                <span className="text-[#a09480]">{lang === 'en' ? 'Looking for:' : 'Gesucht:'}</span>
+                <span className="font-bold text-[#34d399]">{lang === 'en' ? 'Working Student (15–20h/week)' : 'Werkstudent (15–20 Std./Woche)'}</span>
               </div>
               <div className="flex items-center justify-between text-[#e5ded1]">
-                <span className="text-[#a09480]">Sprachen / Languages:</span>
-                <span>🇬🇧 C1 (Fluent) • 🇩🇪 A2 telc (B1 in prep)</span>
+                <span className="text-[#a09480]">{lang === 'en' ? 'Location:' : 'Standort:'}</span>
+                <span className="text-[#38bdf8]">{lang === 'en' ? 'Bavaria / Hybrid / Remote' : 'Bayern / Hybrid / Remote'}</span>
+              </div>
+              <div className="flex items-center justify-between text-[#e5ded1]">
+                <span className="text-[#a09480]">{lang === 'en' ? 'Languages:' : 'Sprachen:'}</span>
+                <span>English (Fluent) • Deutsch (A2 telc, B1 in progress)</span>
               </div>
             </div>
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
-                href="mailto:allasaisurya5292@gmail.com?subject=Golden%20Snitch%20Interview%20Invitation%20-%20Working%20Student%20Sai%20Surya%20Alla"
+                href="mailto:allasaisurya5292@gmail.com?subject=Hello%20Sai%20Surya%20-%20Working%20Student%20Opportunity"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#740001] hover:bg-[#8f0001] text-[#ffd700] border border-[#d3a625] font-cinzel text-xs font-bold shadow-lg transition-all active:scale-95"
               >
                 <Mail className="w-4 h-4" />
-                <span>{lang === 'en' ? 'Schedule Fast-Track Interview' : 'Direktgespräch vereinbaren'}</span>
+                <span>{lang === 'en' ? 'Say Hello / Send Email' : 'Hallo sagen / E-Mail schreiben'}</span>
               </a>
 
               <button
@@ -155,7 +159,7 @@ export const GoldenSnitch: React.FC<GoldenSnitchProps> = ({
                 }}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#23273c] hover:bg-[#323754] text-[#e0d6c3] border border-[#484e75] font-cinzel text-xs font-semibold transition-all cursor-pointer"
               >
-                <span>{lang === 'en' ? 'Open Recruiter Portal' : 'Zum Recruiter-Portal'}</span>
+                <span>{lang === 'en' ? 'View Working Student Details' : 'Werkstudenten-Infos ansehen'}</span>
               </button>
             </div>
 

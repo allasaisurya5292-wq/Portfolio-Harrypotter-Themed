@@ -27,7 +27,7 @@ export const OwlPostSection: React.FC<OwlPostSectionProps> = ({ lang, houseTheme
       ? `Inquiry: Werkstudent IT-Projektmanagement (E-Commerce / Digital Transformation) - ${senderName || 'Recruiter'}`
       : `Hogwarts Owl Post: Opportunity for Sai Surya Alla - ${senderName || 'Contact'}`;
 
-    const bodyText = `Hello Sai Surya,\n\n${message || 'I came across your wizarding portfolio and would like to discuss an opportunity regarding IT Project Management / AI Engineering.'}\n\nBest regards,\n${senderName}\n${senderEmail}`;
+    const bodyText = `Hello Sai Surya,\n\n${message || 'I came across your portfolio and would like to get in touch regarding a working student opportunity / collaboration.'}\n\nBest regards,\n${senderName}\n${senderEmail}`;
 
     const mailtoUrl = `mailto:${p.email}?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`;
     window.open(mailtoUrl, '_blank');
@@ -64,8 +64,8 @@ export const OwlPostSection: React.FC<OwlPostSectionProps> = ({ lang, houseTheme
         </h2>
         <p className="font-parchment text-base sm:text-lg text-[#a89b82] max-w-xl mx-auto italic">
           {lang === 'en'
-            ? 'Seeking a Working Student role in IT Project Management (E-Commerce & Digital Transformation) in Germany. Open to discussing projects & collaborations.'
-            : 'Offen für Werkstudentenstellen im Bereich IT-Projektmanagement (E-Commerce & digitale Transformation) sowie fachlichen Austausch.'}
+            ? 'Looking for a working student role in AI/ML, software engineering, or IT project management in Germany. I would love to connect and chat!'
+            : 'Auf der Suche nach einer Werkstudentenstelle in den Bereichen KI/ML, Softwareentwicklung oder IT-Projektmanagement in Deutschland. Ich freue mich auf Ihre Nachricht!'}
         </p>
       </div>
 
@@ -201,13 +201,16 @@ export const OwlPostSection: React.FC<OwlPostSectionProps> = ({ lang, houseTheme
                 className="w-full px-3 py-2 rounded-lg bg-[#f0e4ca] border border-[#b8a274] text-[#1f170e] text-xs font-cinzel focus:outline-none focus:border-[#740001]"
               >
                 <option value="werkstudent">
-                  {lang === 'en' ? 'Werkstudent Role: IT Project Management (E-Commerce)' : 'Werkstudent: IT-Projektmanagement (E-Commerce & Transformation)'}
+                  {lang === 'en' ? 'Working Student (Werkstudent) Opportunity' : 'Werkstudentenstelle (KI, Software, PM)'}
                 </option>
                 <option value="ai">
                   {lang === 'en' ? 'AI / Data Science & ML Engineering' : 'Künstliche Intelligenz & Data Science'}
                 </option>
+                <option value="swe">
+                  {lang === 'en' ? 'Full-Stack Software Engineering' : 'Full-Stack Softwareentwicklung'}
+                </option>
                 <option value="general">
-                  {lang === 'en' ? 'General Academic or Project Collaboration' : 'Allgemeiner fachlicher Austausch / Projekt'}
+                  {lang === 'en' ? 'Say Hello / General Connection' : 'Austausch / Kennenlernen'}
                 </option>
               </select>
             </div>
@@ -222,8 +225,8 @@ export const OwlPostSection: React.FC<OwlPostSectionProps> = ({ lang, houseTheme
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder={
                   lang === 'en'
-                    ? 'Write your message regarding working student opportunities, interview dates, or technical inquiries...'
-                    : 'Geben Sie hier Ihre Nachricht bezüglich Werkstudentenstellen, Vorstellungsgesprächen oder Rückfragen ein...'
+                    ? 'Feel free to write a message regarding working student opportunities, questions, or just to say hello...'
+                    : 'Schreiben Sie gerne eine kurze Nachricht bezüglich Werkstudentenstellen, Fragen oder einfach zum Kennenlernen...'
                 }
                 className="w-full px-3 py-2 rounded-lg bg-[#f0e4ca] border border-[#b8a274] text-[#1f170e] text-xs font-parchment placeholder-[#8f7954] focus:outline-none focus:border-[#740001]"
               />

@@ -36,8 +36,8 @@ export const ExperienceChronicles: React.FC<ExperienceChroniclesProps> = ({
         </h2>
         <p className="font-parchment text-base sm:text-lg text-[#a89b82] max-w-2xl mx-auto italic">
           {lang === 'en'
-            ? 'Bridging cross-functional squads, cutting scope creep, and steering machine learning lifecycles through disciplined Agile leadership.'
-            : 'Koordination funktionsübergreifender Teams, strukturierte Anforderungsanalyse und erfolgreiche Steuerung datengetriebener Softwareprojekte.'}
+            ? 'Hands-on experiences collaborating with development teams, supporting agile sprints, and working with machine learning workflows.'
+            : 'Praktische Erfahrungen in der Zusammenarbeit mit Entwicklerteams, Unterstützung in agilen Sprints und Arbeit an Machine-Learning-Pipelines.'}
         </p>
       </motion.div>
 

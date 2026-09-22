@@ -29,30 +29,32 @@ export const RecruiterFastTrack: React.FC<RecruiterFastTrackProps> = ({
   const handleCopySummary = () => {
     wizardAudio.playWandSpark();
     const summaryText = lang === 'en'
-      ? `CANDIDATE SUMMARY FOR RECRUITERS & HIRING MANAGERS:
-• Candidate: Sai Surya Alla (M.Sc. Artificial Intelligence, OTH Amberg-Weiden, Germany)
-• Seeking: Working Student (Werkstudent) position in Germany (15–20h/week during semester, 40h/week during breaks)
-• Target Roles: AI/ML Engineering | Full-Stack Software Engineering | IT Project Management | Cloud & DevOps
-• Key Strengths: 
-  - Grand Winner: Smart India Hackathon 2024 (1st prize nationwide out of thousands of teams)
-  - Hands-on Agile PM experience at CourseVita (4+ sprints, 25% sprint velocity increase)
-  - Published Peer-Reviewed AI/NLP Researcher (BERT Fake News Detection)
-• Languages: English C1 (Fluent) | German A2 (Officially telc Certified, Ingolstadt) • Pursuing CEFR B1 | Telugu (Native)
-• Work Permit: German Student Visa (140 full / 280 half days per calendar year)
-• Location: Amberg / Weiden / Nuremberg / Munich / Regensburg / Remote & Hybrid across Germany
-• Contact: allasaisurya5292@gmail.com | +49 175 7408006 | LinkedIn: linkedin.com/in/saisurya2818`
-      : `KANDIDATENPROFIL FÜR RECRUITER & HIRING MANAGER:
-• Kandidat: Sai Surya Alla (M.Sc. Künstliche Intelligenz, OTH Amberg-Weiden)
-• Gesucht: Werkstudentenstelle in Deutschland (15–20h/Woche während des Semesters, bis 40h/Woche in den Semesterferien)
-• Zielbereiche: KI/Machine Learning | Full-Stack Softwareentwicklung | IT-Projektmanagement | Cloud & DevOps
-• Herausragende Erfolge:
-  - Grand Winner: Smart India Hackathon 2024 (1. Platz bundesweit unter tausenden Teams)
-  - Praktische Erfahrung als Agile PM Intern bei CourseVita (4+ Sprints, 25% Velocity-Steigerung)
-  - Begutachtete wissenschaftliche Publikation im Bereich NLP & BERT
-• Sprachen: Englisch C1 (fließend) | Deutsch A2 (offiziell telc-zertifiziert, Ingolstadt) • B1 in aktiver Vorbereitung | Telugu (Muttersprache)
-• Arbeitserlaubnis: Gültiges deutsches Studienvisum (140 volle / 280 halbe Tage/Jahr, unkomplizierte Beschäftigung)
-• Einsatzort: Amberg / Weiden / Nürnberg / München / Regensburg / Hybrid & Remote deutschlandweit
-• Kontakt: allasaisurya5292@gmail.com | +49 175 7408006 | LinkedIn: linkedin.com/in/saisurya2818`;
+      ? `CANDIDATE SUMMARY - SAI SURYA ALLA:
+• Student: Sai Surya Alla (M.Sc. Artificial Intelligence, OTH Amberg-Weiden, Germany)
+• Looking for: Working Student (Werkstudent) role (15–20h/week during semester, up to 40h/week during breaks)
+• Focus Areas: AI/ML Engineering | Full-Stack Software Development | IT Project Coordination | Cloud & DevOps
+• Background Highlights:
+  - Smart India Hackathon 2024: 1st prize nationwide team project (voice-to-text medical assistant prototype)
+  - Agile PM Internship at CourseVita: Hands-on sprint backlog management, user stories in Jira, and team coordination
+  - NLP Research: Co-authored peer-reviewed paper on BERT text classification
+• Languages: English (Fluent, C1) | German (telc A2 certified, currently studying for B1) | Telugu (Native)
+• Work Authorization: German Student Visa (§ 16b, up to 140 full / 280 half days per year)
+• Location: Bavaria (Amberg / Nuremberg / Regensburg / Munich) & open to remote or hybrid
+• Contact: allasaisurya5292@gmail.com | +49 175 7408006 | linkedin.com/in/saisurya2818
+Always happy to connect, learn, and contribute to your team!`
+      : `KURZPROFIL - SAI SURYA ALLA:
+• Student: Sai Surya Alla (M.Sc. Künstliche Intelligenz, OTH Amberg-Weiden)
+• Gesucht: Werkstudentenstelle in Deutschland (15–20 Std./Woche im Semester, bis 40 Std./Woche in den Semesterferien)
+• Themenbereiche: KI/Machine Learning | Full-Stack Softwareentwicklung | IT-Projektunterstützung | Cloud & DevOps
+• Erfahrungen & Stationen:
+  - Smart India Hackathon 2024: 1. Platz im Team (Sprach-zu-Text-Prototyp für medizinische Dokumentation)
+  - Agile PM Praktikant bei CourseVita: Sprint-Backlogs, User Stories in Jira und enge Zusammenarbeit im Entwicklerteam
+  - NLP-Forschung: Mitautor eines begutachteten Papers zu BERT-Textklassifikation
+• Sprachen: Englisch (fließend, C1) | Deutsch (telc A2 zertifiziert, fleißig am Lernen für B1) | Telugu (Muttersprache)
+• Arbeitserlaubnis: Gültiges deutsches Studienvisum (§ 16b, 140 volle / 280 halbe Tage pro Jahr)
+• Einsatzort: Bayern (Amberg / Nürnberg / Regensburg / München) sowie offen für Remote & Hybrid
+• Kontakt: allasaisurya5292@gmail.com | +49 175 7408006 | linkedin.com/in/saisurya2818
+Ich freue mich über jede Gelegenheit, mich einzubringen und ein nettes Team kennenzulernen!`;
 
     navigator.clipboard.writeText(summaryText);
     setCopiedSummary(true);
@@ -141,17 +143,17 @@ export const RecruiterFastTrack: React.FC<RecruiterFastTrackProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-cinzel text-xs font-bold uppercase tracking-wider text-[#ffd700] bg-[#1a1c2e] px-2.5 py-0.5 rounded-full border border-[#d4af37]/60">
-                  {lang === 'en' ? 'Recruiter Fast-Track' : 'Recruiter-Portal'}
+                  {lang === 'en' ? 'Working Student Opportunities' : 'Werkstudentenstellen'}
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#10b981]/20 border border-[#10b981] text-[#34d399] text-xs font-cinzel font-bold animate-pulse">
-                  <span className="w-2 h-2 rounded-full bg-[#10b981]" />
-                  <span>{lang === 'en' ? 'Available Immediately' : 'Sofort Verfügbar'}</span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#10b981]/20 border border-[#10b981] text-[#34d399] text-xs font-cinzel font-bold">
+                  <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
+                  <span>{lang === 'en' ? 'Open to Opportunities' : 'Offen für Stellen'}</span>
                 </span>
               </div>
               <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-[#f5ede0] mt-1">
                 {lang === 'en'
-                  ? 'Hire Sai Surya Alla as a Working Student (Werkstudent)'
-                  : 'Sai Surya Alla als Werkstudent einstellen'}
+                  ? 'Interested in Working Together? Let’s Connect!'
+                  : 'Interesse an einer Zusammenarbeit? Ich freue mich auf den Kontakt!'}
               </h2>
             </div>
           </div>
@@ -160,7 +162,7 @@ export const RecruiterFastTrack: React.FC<RecruiterFastTrackProps> = ({
           <button
             onClick={handleCopySummary}
             className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#ffd700] hover:bg-[#ffea75] text-[#121420] font-cinzel text-xs font-bold transition-all shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:scale-105 active:scale-95 cursor-pointer"
-            title={lang === 'en' ? 'Copy Candidate Summary for Hiring Team' : 'Kandidatenprofil für Recruiting-Team kopieren'}
+            title={lang === 'en' ? 'Copy Quick Profile Summary' : 'Kurzprofil kopieren'}
           >
             {copiedSummary ? (
               <>
@@ -172,7 +174,7 @@ export const RecruiterFastTrack: React.FC<RecruiterFastTrackProps> = ({
             ) : (
               <>
                 <Copy className="w-4 h-4" />
-                <span>{lang === 'en' ? 'Copy Recruiter 1-Page Summary' : 'Recruiter 1-Klick Zusammenfassung'}</span>
+                <span>{lang === 'en' ? 'Copy Quick Profile Summary' : 'Kurzprofil kopieren'}</span>
               </>
             )}
           </button>
@@ -254,13 +256,13 @@ export const RecruiterFastTrack: React.FC<RecruiterFastTrackProps> = ({
             <div>
               <h3 className="font-cinzel text-lg sm:text-xl font-bold text-[#f5ede0]">
                 {lang === 'en'
-                  ? 'Explore Working Student Roles Sai Surya Excels At'
-                  : 'Passende Werkstudenten-Rollen'}
+                  ? 'Areas I Would Love to Support You In'
+                  : 'Bereiche, in denen ich Sie gerne unterstütze'}
               </h3>
               <p className="text-xs text-[#a89b82] font-parchment">
                 {lang === 'en'
-                  ? 'Click each track to preview relevant skills, frameworks, and proven project delivery.'
-                  : 'Wählen Sie einen Schwerpunkt, um relevante Frameworks und Praxiserfahrung zu sehen.'}
+                  ? 'Click each track to see relevant frameworks, tools, and hands-on projects.'
+                  : 'Klicken Sie auf einen Bereich, um relevante Frameworks, Tools und praktische Erfahrungen zu sehen.'}
               </p>
             </div>
           </div>
@@ -341,13 +343,13 @@ export const RecruiterFastTrack: React.FC<RecruiterFastTrackProps> = ({
                   <a
                     href={`mailto:${p.email}?subject=${encodeURIComponent(
                       lang === 'en'
-                        ? `Interview Invitation: Working Student ${current.title.en} - Sai Surya Alla`
-                        : `Einladung zum Vorstellungsgespräch: Werkstudent ${current.title.de} - Sai Surya Alla`
+                        ? `Getting in Touch: Working Student Opportunity - Sai Surya Alla`
+                        : `Kennenlernen: Werkstudentenstelle - Sai Surya Alla`
                     )}`}
                     className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#740001] hover:bg-[#8f0001] text-[#ffd700] border border-[#d3a625] font-cinzel text-xs font-bold shadow-md transition-all active:scale-95 text-center"
                   >
                     <Mail className="w-4 h-4" />
-                    <span>{lang === 'en' ? 'Schedule Interview' : 'Gespräch anfragen'}</span>
+                    <span>{lang === 'en' ? 'Get in Touch / Say Hello' : 'Kontakt aufnehmen / Kennenlernen'}</span>
                   </a>
                 </div>
               </div>
@@ -355,11 +357,11 @@ export const RecruiterFastTrack: React.FC<RecruiterFastTrackProps> = ({
           })()}
         </div>
 
-        {/* Why Hire Sai Surya? (4 Golden Proof Points) */}
+        {/* Background & Experiences (4 Friendly Proof Points) */}
         <div className="mt-8 pt-6 border-t border-[#c8b488]/30">
           <h4 className="font-cinzel font-bold text-sm sm:text-base text-[#ffd700] mb-4 flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-[#ffd700]" />
-            <span>{lang === 'en' ? 'Why Hire Sai Surya for Your Team?' : 'Warum Sai Surya Alla die ideale Verstärkung ist:'}</span>
+            <span>{lang === 'en' ? 'A Little More About My Journey & Experiences' : 'Ein kleiner Einblick in meinen Werdegang & Erfahrungen:'}</span>
           </h4>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -371,12 +373,12 @@ export const RecruiterFastTrack: React.FC<RecruiterFastTrackProps> = ({
               </div>
               <div>
                 <h5 className="font-cinzel text-xs font-bold text-[#e6dfd1]">
-                  {lang === 'en' ? 'Nationwide Hackathon Grand Winner (SIH 2024)' : 'Bundessieger Smart India Hackathon 2024'}
+                  {lang === 'en' ? 'Smart India Hackathon 2024 (Team 1st Prize)' : 'Smart India Hackathon 2024 (1. Platz im Team)'}
                 </h5>
                 <p className="text-[11px] text-[#9ca3af] font-parchment mt-0.5 leading-relaxed">
                   {lang === 'en'
-                    ? 'Selected #1 out of thousands of competitive teams across India. Proven speed, stress tolerance, and rapid software engineering.'
-                    : '1. Platz bundesweit unter tausenden Teams. Bewiesene Umsetzungsstärke, Stressresistenz und pragmatische Entwicklung.'}
+                    ? 'Collaborated closely with an enthusiastic team to prototype an AI speech-to-text medical reporting assistant under tight timelines. A wonderful team and learning experience.'
+                    : 'Zusammenarbeit im Team bei der Entwicklung eines KI-Sprach-zu-Text-Prototyps für Arztberichte unter realem Zeitdruck. Eine tolle Team- und Lernerfahrung.'}
                 </p>
               </div>
             </div>
@@ -388,12 +390,12 @@ export const RecruiterFastTrack: React.FC<RecruiterFastTrackProps> = ({
               </div>
               <div>
                 <h5 className="font-cinzel text-xs font-bold text-[#e6dfd1]">
-                  {lang === 'en' ? 'Hands-on Agile Experience at CourseVita' : 'Praxiserfahrung im agilen IT-Projektmanagement'}
+                  {lang === 'en' ? 'Agile PM Internship at CourseVita' : 'Praktikum im agilen Projektmanagement bei CourseVita'}
                 </h5>
                 <p className="text-[11px] text-[#9ca3af] font-parchment mt-0.5 leading-relaxed">
                   {lang === 'en'
-                    ? 'Guided 4+ agile development sprints, boosting velocity by 25% with a 95% zero-defect deployment rate.'
-                    : 'Leitung von 4+ Sprints bei CourseVita, Steigerung der Sprint-Velocity um 25% bei 95% fehlerfreier Release-Quote.'}
+                    ? 'Helped manage sprint backlogs, authored clear user stories in Jira, and worked directly alongside developers and product mentors to learn agile coordination.'
+                    : 'Unterstützung beim Sprint-Backlog-Management, Verfassen von User Stories in Jira und direkte Zusammenarbeit mit Entwicklern und Mentoren im agilen Projektalltag.'}
                 </p>
               </div>
             </div>
@@ -405,12 +407,12 @@ export const RecruiterFastTrack: React.FC<RecruiterFastTrackProps> = ({
               </div>
               <div>
                 <h5 className="font-cinzel text-xs font-bold text-[#e6dfd1]">
-                  {lang === 'en' ? 'Published NLP & AI Research (IRF 2024)' : 'Begutachtete KI-Publikation (IRF 2024)'}
+                  {lang === 'en' ? 'NLP Research with BERT Transformers' : 'Wissenschaftliche Arbeit zu BERT & NLP'}
                 </h5>
                 <p className="text-[11px] text-[#9ca3af] font-parchment mt-0.5 leading-relaxed">
                   {lang === 'en'
-                    ? 'Co-authored peer-reviewed paper on BERT-based NLP models with high accuracy, cited in 2 subsequent research studies.'
-                    : 'Autor begutachteter Forschung zu BERT-basierten NLP-Modellen, zitiert in zwei wissenschaftlichen Folgepublikationen.'}
+                    ? 'Co-authored a research paper exploring BERT models for text classification. A fun research project that deepened my enthusiasm for applied NLP.'
+                    : 'Mitautor einer wissenschaftlichen Arbeit zur Textklassifikation mittels BERT-Modellen – ein spannendes Projekt, das mein Interesse an angewandter KI vertieft hat.'}
                 </p>
               </div>
             </div>
@@ -422,12 +424,12 @@ export const RecruiterFastTrack: React.FC<RecruiterFastTrackProps> = ({
               </div>
               <div>
                 <h5 className="font-cinzel text-xs font-bold text-[#e6dfd1]">
-                  {lang === 'en' ? 'telc A2 Certified • Actively Pursuing CEFR B1' : 'telc A2 zertifiziert • B1 in intensiver Vorbereitung'}
+                  {lang === 'en' ? 'telc A2 Certified • Actively Learning German B1' : 'telc A2 zertifiziert • Fleißig am Lernen für B1'}
                 </h5>
                 <p className="text-[11px] text-[#9ca3af] font-parchment mt-0.5 leading-relaxed">
                   {lang === 'en'
-                    ? 'Successfully completed telc Start Deutsch 2 in Ingolstadt; actively advancing toward B1 for professional workplace German.'
-                    : 'Erfolgreich zertifiziert bei telc in Ingolstadt; aktuell aktive Vertiefung auf Niveau B1 für den Arbeitsalltag.'}
+                    ? 'Completed the telc A2 exam in Ingolstadt and consistently studying to reach B1. I love practicing German and speaking with colleagues in daily team life!'
+                    : 'telc A2-Zertifikat in Ingolstadt absolviert und kontinuierlich am Lernen für B1. Ich freue mich darauf, im Team Deutsch zu sprechen und dazuzulernen!'}
                 </p>
               </div>
             </div>

@@ -159,7 +159,7 @@ export const HeroLetter: React.FC<HeroLetterProps> = ({
                 }}
                 className="px-3.5 py-1.5 rounded-lg bg-[#740001] hover:bg-[#8f0001] text-[#ffd700] border border-[#d3a625] font-cinzel text-xs font-bold shadow-sm transition-all hover:scale-105 cursor-pointer whitespace-nowrap"
               >
-                <span>{lang === 'en' ? '⚡ Recruiter Portal' : '⚡ Zum Recruiter-Portal'}</span>
+                <span>{lang === 'en' ? '⚡ Werkstudent Overview' : '⚡ Werkstudenten-Profil'}</span>
               </button>
             </div>
           </div>
@@ -256,7 +256,7 @@ export const HeroLetter: React.FC<HeroLetterProps> = ({
               className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl font-cinzel text-xs font-bold bg-[#ffd700] text-[#141624] hover:bg-[#ffe359] border border-[#d4af37] shadow-md transition-all active:scale-95 cursor-pointer"
             >
               <Briefcase className="w-4 h-4 text-[#740001]" />
-              <span>{lang === 'en' ? 'Recruiter Fast-Track' : 'Recruiter-Portal'}</span>
+              <span>{lang === 'en' ? 'Working Student Info' : 'Werkstudenten-Profil'}</span>
             </button>
 
             {/* Accio Resume CTA */}
