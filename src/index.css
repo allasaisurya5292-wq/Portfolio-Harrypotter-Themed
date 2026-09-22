@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --gold: #d4af37;
+    --gold-bright: #ffd700;
+    --parchment: #f4ecd8;
+    --parchment-dark: #e5d8b8;
+    --ink: #1f1b16;
+  }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background-color: #08090d;
+    color: #e5ded2;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-cinzel {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.05em;
+  }
+
+  .font-cinzel-dec {
+    font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  }
+
+  .font-medieval {
+    font-family: 'MedievalSharp', cursive, serif;
+  }
+
+  .font-parchment {
+    font-family: 'EB Garamond', Georgia, serif;
+  }
+}
+
+/* Custom Potteresque parchment styling */
+.parchment-card {
+  background-color: #171821;
+  background-image: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.07) 0%, transparent 75%);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.parchment-paper {
+  background-color: #f7f1e1;
+  color: #211c16;
+  background-image: 
+    radial-gradient(#dfd4ba 1px, transparent 1px),
+    radial-gradient(circle at 10% 20%, rgba(184, 150, 94, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(184, 150, 94, 0.12) 0%, transparent 50%);
+  background-size: 24px 24px, 100% 100%, 100% 100%;
+  border: 1px solid #d4c29c;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 0 40px rgba(180, 140, 70, 0.15);
+}
+
+.gold-gradient-border {
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gold-gradient-border:hover {
+  border-color: rgba(212, 175, 55, 0.8);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.18);
+}
+
+/* Magical Floating animations */
+@keyframes magicalFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
+.animate-magical-float {
+  animation: magicalFloat 6s ease-in-out infinite;
+}
+
+@keyframes candleFlicker {
+  0%, 100% {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 8px rgba(255, 200, 80, 0.6));
+  }
+  33% {
+    opacity: 0.75;
+    filter: drop-shadow(0 0 5px rgba(255, 170, 40, 0.4));
+  }
+  66% {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(255, 220, 100, 0.8));
+  }
+}
+
+.animate-flicker {
+  animation: candleFlicker 2.8s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Wizarding Tome */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0c10;
+}
+::-webkit-scrollbar-thumb {
+  background: #2b261f;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4a3e2e;
+}
