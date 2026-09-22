@@ -10,6 +10,7 @@ interface HogwartsHeaderProps {
   lang: 'en' | 'de';
   onToggleLang: () => void;
   onOpenSortingHat: () => void;
+  onOpenTelcCert?: () => void;
 }
 
 export const HogwartsHeader: React.FC<HogwartsHeaderProps> = ({
@@ -18,6 +19,7 @@ export const HogwartsHeader: React.FC<HogwartsHeaderProps> = ({
   lang,
   onToggleLang,
   onOpenSortingHat,
+  onOpenTelcCert,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const activeHouseTheme = HOUSES[currentHouse];
@@ -28,6 +30,7 @@ export const HogwartsHeader: React.FC<HogwartsHeaderProps> = ({
   };
 
   const navLinks = [
+    { href: '#recruiter-fast-track', label: lang === 'en' ? 'Werkstudent' : 'Werkstudent', icon: Briefcase, highlight: true },
     { href: '#acceptance-letter', label: lang === 'en' ? 'Profile' : 'Profil', icon: Scroll },
     { href: '#chronicles', label: lang === 'en' ? 'Chronicles' : 'Erfahrung', icon: Briefcase },
     { href: '#potions-skills', label: lang === 'en' ? 'Skills' : 'Kenntnisse', icon: Code },
@@ -166,6 +169,21 @@ export const HogwartsHeader: React.FC<HogwartsHeaderProps> = ({
             <Globe className="w-3.5 h-3.5 text-[#d4af37]" />
             <span className="font-bold">{lang === 'en' ? 'EN' : 'DE'}</span>
           </button>
+
+          {/* Direct telc A2 Certificate Shortcut */}
+          {onOpenTelcCert && (
+            <button
+              onClick={() => {
+                onOpenTelcCert();
+                wizardAudio.playWandSpark();
+              }}
+              className="hidden lg:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-cinzel bg-[#1b261d] border border-[#059669]/60 text-[#a7f3d0] hover:text-[#ffd700] hover:border-[#ffd700] transition-all cursor-pointer shadow-sm"
+              title={lang === 'de' ? 'Offizielles telc A2-Zertifikat ansehen' : 'View official telc A2 certificate'}
+            >
+              <span>🇩🇪</span>
+              <span className="font-bold">telc A2</span>
+            </button>
+          )}
 
           {/* Mobile / Tablet Menu Button */}
           <button

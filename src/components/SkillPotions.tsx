@@ -6,9 +6,10 @@ import { wizardAudio } from '../utils/audio';
 interface SkillPotionsProps {
   lang: 'en' | 'de';
   houseTheme: HouseTheme;
+  onOpenTelcCert?: () => void;
 }
 
-export const SkillPotions: React.FC<SkillPotionsProps> = ({ lang, houseTheme }) => {
+export const SkillPotions: React.FC<SkillPotionsProps> = ({ lang, houseTheme, onOpenTelcCert }) => {
   const [activeTab, setActiveTab] = useState<'all' | 'pm' | 'tech' | 'ai' | 'cloud' | 'languages'>('all');
   const s = RESUME_DATA.skills;
 
@@ -150,24 +151,66 @@ export const SkillPotions: React.FC<SkillPotionsProps> = ({ lang, houseTheme }) 
           </div>
 
           <div className="space-y-3 mt-4">
-            {s.languages.items.map((langItem, idx) => (
-              <div
-                key={idx}
-                className="p-2.5 rounded-xl bg-[#181a28] border border-[#2f334a] flex items-center justify-between"
-              >
-                <div className="flex items-center gap-2">
-                  <span className="text-base">
-                    {langItem.lang.includes('English') ? '🇬🇧' : langItem.lang.includes('German') ? '🇩🇪' : '🇮🇳'}
-                  </span>
-                  <span className="font-cinzel text-xs font-semibold text-[#f2e9db]">
-                    {langItem.lang}
-                  </span>
+            {s.languages.items.map((langItem, idx) => {
+              const isGerman = langItem.lang.includes('German');
+              return (
+                <div
+                  key={idx}
+                  className={`p-3 rounded-xl border transition-all ${
+                    isGerman
+                      ? 'bg-gradient-to-r from-[#201d2d] to-[#181a28] border-[#d4af37]/60 shadow-[0_0_15px_rgba(212,175,55,0.12)]'
+                      : 'bg-[#181a28] border-[#2f334a]'
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg">
+                        {langItem.lang.includes('English') ? '🇬🇧' : isGerman ? '🇩🇪' : '🇮🇳'}
+                      </span>
+                      <div>
+                        <span className="font-cinzel text-xs font-semibold text-[#f2e9db] block">
+                          {langItem.lang}
+                        </span>
+                        {isGerman && (
+                          <span className="text-[10px] text-[#ffd700]/90 font-parchment flex items-center gap-1">
+                            <CheckCircle2 className="w-3 h-3 text-[#10b981]" />
+                            <span>{lang === 'de' ? 'Offiziell telc-zertifiziert (Ingolstadt)' : 'Official telc Certified (Ingolstadt, DE)'}</span>
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-xs font-parchment font-bold px-2 py-0.5 rounded bg-[#25283c] border border-[#444866] text-[#ffd700] inline-block">
+                        {lang === 'en' ? langItem.level : langItem.deLevel}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* German Special Interactive Box: View telc Certificate & B1 Progress */}
+                  {isGerman && (
+                    <div className="mt-3 pt-2.5 border-t border-[#3e394d] flex flex-wrap items-center justify-between gap-2">
+                      <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#ffd700]/10 border border-[#ffd700]/30 text-[#ffd700] text-[10px] font-cinzel font-semibold">
+                        <Sparkles className="w-2.5 h-2.5 text-[#ffd700] animate-pulse" />
+                        <span>{lang === 'de' ? 'Aktuell B1 in Vorbereitung' : 'Pursuing CEFR B1'}</span>
+                      </div>
+
+                      {onOpenTelcCert && (
+                        <button
+                          onClick={() => {
+                            onOpenTelcCert();
+                            wizardAudio.playWandSpark();
+                          }}
+                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#740001] hover:bg-[#8f0001] text-[#ffd700] border border-[#d3a625] text-[11px] font-cinzel font-bold shadow-sm transition-all hover:scale-105 cursor-pointer"
+                        >
+                          <BookOpen className="w-3 h-3" />
+                          <span>{lang === 'de' ? 'telc-Zertifikat ansehen' : 'View telc Certificate'}</span>
+                        </button>
+                      )}
+                    </div>
+                  )}
                 </div>
-                <span className="text-xs font-parchment font-bold px-2 py-0.5 rounded bg-[#25283c] border border-[#444866] text-[#ffd700]">
-                  {lang === 'en' ? langItem.level : langItem.deLevel}
-                </span>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

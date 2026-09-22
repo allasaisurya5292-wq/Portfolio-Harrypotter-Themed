@@ -16,6 +16,9 @@ import { LumosCursor } from './components/LumosCursor';
 import { SortingHatModal } from './components/SortingHatModal';
 import { SecretVaultModal } from './components/SecretVaultModal';
 import { AccioResumeModal } from './components/AccioResumeModal';
+import { TelcCertificateModal } from './components/TelcCertificateModal';
+import { RecruiterFastTrack } from './components/RecruiterFastTrack';
+import { GoldenSnitch } from './components/GoldenSnitch';
 
 export default function App() {
   const [lang, setLang] = useState<'en' | 'de'>('en');
@@ -29,6 +32,7 @@ export default function App() {
   const [sortingHatOpen, setSortingHatOpen] = useState(false);
   const [vaultOpen, setVaultOpen] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
+  const [telcCertOpen, setTelcCertOpen] = useState(false);
 
   useEffect(() => {
     wizardAudio.setOnThemeStateChange((playing) => {
@@ -106,6 +110,7 @@ export default function App() {
           wizardAudio.playSortingFanfare();
           setSortingHatOpen(true);
         }}
+        onOpenTelcCert={() => setTelcCertOpen(true)}
       />
 
       {/* Interactive Wand Spell Deck */}
@@ -118,6 +123,10 @@ export default function App() {
         onLevitateToggle={() => setIsLevitating(!isLevitating)}
         isLevitating={isLevitating}
         onSpellNotification={triggerSpellToast}
+        onOpenRecruiterPortal={() => {
+          const el = document.getElementById('recruiter-fast-track');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }}
       />
 
       <main className="relative z-10">
@@ -132,6 +141,15 @@ export default function App() {
           }}
           onPlayMusic={() => wizardAudio.toggleHedwigTheme()}
           isMusicPlaying={isMusicPlaying}
+          onOpenTelcCert={() => setTelcCertOpen(true)}
+        />
+
+        {/* Dedicated Recruiter Fast-Track Portal for Working Student Positions */}
+        <RecruiterFastTrack
+          lang={lang}
+          houseTheme={currentHouseTheme}
+          onOpenResume={() => setResumeOpen(true)}
+          onOpenTelcCert={() => setTelcCertOpen(true)}
         />
 
         {/* Experience Chronicles (NIELIT Healthcare & CourseVita Agile PM) */}
@@ -145,6 +163,7 @@ export default function App() {
         <SkillPotions
           lang={lang}
           houseTheme={currentHouseTheme}
+          onOpenTelcCert={() => setTelcCertOpen(true)}
         />
 
         {/* Triwizard Projects (WhatsApp Voice-to-Text & BERT Fake News Detection) */}
@@ -158,6 +177,7 @@ export default function App() {
         <OrderOfMerlinAwards
           lang={lang}
           houseTheme={currentHouseTheme}
+          onOpenTelcCert={() => setTelcCertOpen(true)}
         />
 
         {/* Marauder's Map Easter Egg */}
@@ -176,6 +196,15 @@ export default function App() {
         lang={lang}
         houseTheme={currentHouseTheme}
         onOpenResume={() => setResumeOpen(true)}
+      />
+
+      {/* Interactive Golden Snitch Flight & Easter Egg */}
+      <GoldenSnitch
+        lang={lang}
+        onOpenRecruiterPortal={() => {
+          const el = document.getElementById('recruiter-fast-track');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }}
       />
 
       {/* Floating Audio Controller for Hedwig's Theme & Hogwarts Sounds */}
@@ -204,6 +233,14 @@ export default function App() {
       <AccioResumeModal
         isOpen={resumeOpen}
         onClose={() => setResumeOpen(false)}
+        lang={lang}
+        onOpenTelcCert={() => setTelcCertOpen(true)}
+      />
+
+      {/* Official telc German Language Certificate Modal */}
+      <TelcCertificateModal
+        isOpen={telcCertOpen}
+        onClose={() => setTelcCertOpen(false)}
         lang={lang}
       />
     </div>

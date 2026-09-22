@@ -43,12 +43,12 @@ export const RESUME_DATA = {
     nationality: { en: "Indian", de: "Indisch" },
     visa: { en: "Student Visa (Germany)", de: "Aufenthaltstitel: Studienvisum (Deutschland)" },
     targetRole: {
-      en: "Working Student IT Project Management | E-Commerce & Digital Transformation",
-      de: "Werkstudent IT-Projektmanagement im Bereich E-Commerce und digitale Transformation"
+      en: "Working Student: AI & Machine Learning | Software Engineering | IT Project Management | Cloud & DevOps",
+      de: "Werkstudent: KI & Machine Learning | Softwareentwicklung | IT-Projektmanagement | Cloud & DevOps"
     },
     bio: {
-      en: "Master's student in Artificial Intelligence with hands-on expertise in IT Project Management, Agile Software Engineering, and data-driven architectures. Skilled in steering cross-functional teams, coordinating project lifecycles, and engineering production ML & Full-Stack solutions. Currently pursuing M.Sc. in Germany, passionate about transforming e-commerce and enterprise digital systems.",
-      de: "Master-Student im Bereich Künstliche Intelligenz mit fundierter Erfahrung in IT-Projektmanagement, agiler Softwareentwicklung und datengetriebenen Lösungen. Koordination funktionsübergreifender Teams, Steuerung von Projektlebenszyklen sowie Umsetzung von ML- und Full-Stack-Anwendungen. Angestrebte Position: Werkstudent IT-Projektmanagement im Bereich E-Commerce und digitale Transformation."
+      en: "Master's student in Artificial Intelligence at OTH Amberg-Weiden actively seeking a Working Student (Werkstudent) position in Germany. Combines proven engineering vigor as nationwide hackathon champion (Smart India Hackathon 2024 winner), practical industry Agile PM experience delivering 4+ sprints at CourseVita, and published peer-reviewed AI/NLP research. Available immediately for up to 20 hours/week during semester and up to 40 hours/week in semester breaks (on-site in Bavaria, hybrid, or remote nationwide).",
+      de: "Master-Student im Bereich Künstliche Intelligenz an der OTH Amberg-Weiden, aktiv auf der Suche nach einer Werkstudentenstelle in Deutschland (KI/ML, Full-Stack Softwareentwicklung, IT-Projektmanagement oder Cloud). Bundessieger des Smart India Hackathon 2024, Praxiserfahrung als Agile PM Intern bei CourseVita (4+ Sprints, 25% Velocity-Steigerung) sowie begutachtete wissenschaftliche Publikation. Ab sofort verfügbar für bis zu 20 Std./Woche (bis zu 40 Std./Woche in den Semesterferien) vor Ort in Bayern, hybrid oder remote bundesweit."
     },
     quote: {
       en: "“Words are, in my not-so-humble opinion, our most inexhaustible source of magic.” — Albus Dumbledore",
@@ -237,14 +237,59 @@ export const RESUME_DATA = {
       categoryName: { en: "Spoken Tongues & Polyglot Prowess", de: "Sprachkenntnisse" },
       magicalSpell: "Linguarum Veritas",
       items: [
-        { lang: "English", level: "C1 (Fluent)", deLevel: "C1 (fließend)" },
-        { lang: "German (Deutsch)", level: "A2 (Actively Learning in Germany)", deLevel: "A2 (aktiv lernend)" },
-        { lang: "Telugu", level: "Native Speaker", deLevel: "Muttersprache" }
+        { 
+          lang: "English", 
+          level: "C1 (Fluent)", 
+          deLevel: "C1 (fließend)",
+          badge: "Fluent / Professional",
+          hasCertificate: false
+        },
+        { 
+          lang: "German (Deutsch)", 
+          level: "A2 (telc Certified) • Pursuing B1", 
+          deLevel: "A2 (telc-zertifiziert) • B1 in Vorbereitung",
+          badge: "Official telc A2 • Pursuing B1",
+          hasCertificate: true,
+          certificateId: "telc-GDrbcvJ",
+          certificateName: "Start Deutsch 2 (Europariatsstufe A2)",
+          issuer: "telc GmbH & Zentrum für fremdsprachliche Bildung Ingolstadt",
+          score: "36,5 / 60 Punkte (Ausreichend)",
+          examDate: "28.07.2026",
+          issueDate: "02.09.2026",
+          location: "Ingolstadt / Deutschland",
+          verifyUrl: "https://results.telc.net",
+          pursuingB1: true
+        },
+        { 
+          lang: "Telugu", 
+          level: "Native Speaker", 
+          deLevel: "Muttersprache",
+          badge: "Native",
+          hasCertificate: false
+        }
       ]
     }
   },
 
   awards: [
+    {
+      id: "telc-a2-2026",
+      title: {
+        en: "Official telc German A2 Language Certificate (Start Deutsch 2)",
+        de: "Offizielles telc-Sprachzertifikat Deutsch A2 (Start Deutsch 2)"
+      },
+      issuer: {
+        en: "telc gGmbH & Zentrum für fremdsprachliche Bildung Ingolstadt",
+        de: "telc gGmbH & Zentrum für fremdsprachliche Bildung Ingolstadt GmbH"
+      },
+      year: "2026",
+      magicalTrophy: "Tome of German Polyglot Mastery",
+      badge: "Official telc A2 • Pursuing B1",
+      description: {
+        en: "Successfully passed and officially certified in Council of Europe level A2 (Start Deutsch 2) in Ingolstadt, Germany (ID: telc-GDrbcvJ). Currently actively advancing toward CEFR B1 proficiency.",
+        de: "Offiziell zertifizierter Abschluss Start Deutsch 2 (Gemeinsamer europäischer Referenzrahmen A2) in Ingolstadt (ID: telc-GDrbcvJ). Derzeit B1-Sprachniveau in Vorbereitung."
+      }
+    },
     {
       id: "sih-2024",
       title: {

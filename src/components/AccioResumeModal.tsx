@@ -7,9 +7,10 @@ interface AccioResumeModalProps {
   isOpen: boolean;
   onClose: () => void;
   lang: 'en' | 'de';
+  onOpenTelcCert?: () => void;
 }
 
-export const AccioResumeModal: React.FC<AccioResumeModalProps> = ({ isOpen, onClose, lang: initialLang }) => {
+export const AccioResumeModal: React.FC<AccioResumeModalProps> = ({ isOpen, onClose, lang: initialLang, onOpenTelcCert }) => {
   const [lang, setLang] = useState<'en' | 'de'>(initialLang);
   const [copied, setCopied] = useState(false);
 
@@ -56,12 +57,12 @@ Programming: ${RESUME_DATA.skills.programming.items.join(', ')}
 Web & APIs: ${RESUME_DATA.skills.webApis.items.join(', ')}
 AI & Data: ${RESUME_DATA.skills.dataAi.items.join(', ')}
 DevOps & Cloud: ${RESUME_DATA.skills.devOpsCloud.items.join(', ')}
-Languages: English C1, German A2, Telugu Native
+Languages: English C1 (Fluent), German A2 (telc Certified • Pursuing B1), Telugu (Native)
 
 PUBLIKATIONEN & AUSZEICHNUNGEN
-• ${RESUME_DATA.awards[2].title[lang]} - ${RESUME_DATA.awards[2].issuer[lang]}
 • ${RESUME_DATA.awards[0].title[lang]} - ${RESUME_DATA.awards[0].issuer[lang]}
 • ${RESUME_DATA.awards[1].title[lang]} - ${RESUME_DATA.awards[1].issuer[lang]}
+• ${RESUME_DATA.awards[2].title[lang]} - ${RESUME_DATA.awards[2].issuer[lang]}
     `.trim();
 
     navigator.clipboard.writeText(text);
@@ -153,6 +154,11 @@ PUBLIKATIONEN & AUSZEICHNUNGEN
             <p className="text-xs font-parchment text-[#705a33] mt-1 italic">
               {p.nationality[lang]} | {p.visa[lang]}
             </p>
+            <div className="mt-2.5 inline-flex flex-wrap items-center justify-center gap-2 px-3.5 py-1 rounded-full bg-[#10b981]/15 border border-[#10b981] text-[#065f46] text-xs font-cinzel font-bold">
+              <span>⚡ {p.targetRole[lang]}</span>
+              <span className="text-[#059669]">•</span>
+              <span>{lang === 'en' ? 'Available Immediately (Up to 20h/wk)' : 'Sofort verfügbar (bis 20h/Woche)'}</span>
+            </div>
           </div>
 
           {/* Profil */}
@@ -277,11 +283,24 @@ PUBLIKATIONEN & AUSZEICHNUNGEN
                 <strong className="font-cinzel text-[#1a1309]">DevOps & Cloud:</strong>{' '}
                 {RESUME_DATA.skills.devOpsCloud.items.join(', ')}
               </p>
-              <p>
+              <p className="flex flex-wrap items-center gap-1.5">
                 <strong className="font-cinzel text-[#1a1309]">{lang === 'en' ? 'Languages:' : 'Sprachen:'}</strong>{' '}
-                {lang === 'en'
-                  ? 'English C1 (Fluent) | German A2 (Actively Learning in Germany) | Telugu (Native)'
-                  : 'Englisch C1 (fließend) | Deutsch A2 (aktiv lernend) | Telugu (Muttersprache)'}
+                <span>
+                  {lang === 'en'
+                    ? 'English C1 (Fluent) | German A2 (Officially telc Certified • Pursuing B1) | Telugu (Native)'
+                    : 'Englisch C1 (fließend) | Deutsch A2 (offiziell telc-zertifiziert • B1 in Vorbereitung) | Telugu (Muttersprache)'}
+                </span>
+                {onOpenTelcCert && (
+                  <button
+                    onClick={() => {
+                      wizardAudio.playWandSpark();
+                      onOpenTelcCert();
+                    }}
+                    className="ml-1 inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#740001] text-[#ffd700] hover:bg-[#8f0001] border border-[#d3a625] text-[10px] font-cinzel font-bold cursor-pointer transition-all"
+                  >
+                    <span>{lang === 'en' ? 'View telc A2 Cert' : 'telc A2-Zertifikat ansehen'}</span>
+                  </button>
+                )}
               </p>
             </div>
           </div>
@@ -292,6 +311,12 @@ PUBLIKATIONEN & AUSZEICHNUNGEN
               {lang === 'en' ? 'Publications & Awards' : 'Publikationen & Auszeichnungen'}
             </h2>
             <ul className="list-disc list-inside space-y-1.5 text-xs text-[#2b2216]">
+              <li>
+                <strong>{lang === 'en' ? 'Certification:' : 'Zertifizierung:'}</strong>{' '}
+                {lang === 'en' 
+                  ? 'Official telc German A2 Language Certificate (Start Deutsch 2) – telc gGmbH, Ingolstadt (Score: 36.5/60). Pursuing CEFR B1.'
+                  : 'Offizielles telc-Sprachzertifikat Deutsch A2 (Start Deutsch 2) – telc gGmbH, Ingolstadt (36,5/60 Punkte). B1 in Vorbereitung.'}
+              </li>
               <li>
                 <strong>{lang === 'en' ? 'Publication:' : 'Veröffentlichung:'}</strong> „Fake News Detection using BERT-based NLP Models“ – IRF International Conference, 2024. Peer-reviewed; in 2 Folgepublikationen zitiert.
               </li>

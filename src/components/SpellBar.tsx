@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Wand, Eye, Unlock, Shield, Feather, FileText, Zap } from 'lucide-react';
+import { Sparkles, Wand, Eye, Unlock, Shield, Feather, FileText, Zap, Briefcase, Droplets } from 'lucide-react';
 import { wizardAudio } from '../utils/audio';
 import confetti from 'canvas-confetti';
 
@@ -12,6 +12,7 @@ interface SpellBarProps {
   onLevitateToggle: () => void;
   isLevitating: boolean;
   onSpellNotification: (msg: string) => void;
+  onOpenRecruiterPortal?: () => void;
 }
 
 export const SpellBar: React.FC<SpellBarProps> = ({
@@ -23,9 +24,47 @@ export const SpellBar: React.FC<SpellBarProps> = ({
   onLevitateToggle,
   isLevitating,
   onSpellNotification,
+  onOpenRecruiterPortal,
 }) => {
   const castSpell = (spell: string) => {
     switch (spell) {
+      case 'werkstudent':
+        wizardAudio.playCelestaNote(987.77, 0.8, 1.2);
+        wizardAudio.playWandSpark();
+        confetti({
+          particleCount: 50,
+          spread: 80,
+          origin: { y: 0.3 },
+          colors: ['#ffd700', '#10b981', '#ffffff'],
+        });
+        if (onOpenRecruiterPortal) {
+          onOpenRecruiterPortal();
+        } else {
+          const el = document.getElementById('recruiter-fast-track');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+        onSpellNotification(
+          lang === 'en'
+            ? '⚡ Accio Werkstudent! Summoning Recruiter Working Student Portal'
+            : '⚡ Accio Werkstudent! Recruiter- & Werkstudentenportal herbeigerufen'
+        );
+        break;
+
+      case 'aguamenti':
+        wizardAudio.playCelestaNote(659.25, 0.5, 0.8);
+        confetti({
+          particleCount: 40,
+          spread: 60,
+          origin: { y: 0.5 },
+          colors: ['#38bdf8', '#0284c7', '#bae6fd'],
+        });
+        onSpellNotification(
+          lang === 'en'
+            ? '💧 Aguamenti! Crystal clear focus & refreshed build pipelines'
+            : '💧 Aguamenti! Kristallklarer Fokus & erfrischte CI/CD Pipelines'
+        );
+        break;
+
       case 'lumos':
         wizardAudio.playLumos();
         onToggleLumos();
@@ -99,6 +138,14 @@ export const SpellBar: React.FC<SpellBarProps> = ({
 
   const spells = [
     {
+      id: 'werkstudent',
+      name: 'Accio Werkstudent',
+      icon: Briefcase,
+      hint: lang === 'en' ? 'Summon Recruiter Portal & Working Student Availability' : 'Recruiter- & Werkstudentenportal rufen',
+      active: false,
+      color: 'hover:border-emerald-400 hover:text-emerald-300 font-bold bg-[#142319]/80 border-[#10b981]/50 text-[#34d399]',
+    },
+    {
       id: 'lumos',
       name: lumosActive ? 'Nox / Lumos' : 'Lumos',
       icon: Eye,
@@ -113,6 +160,14 @@ export const SpellBar: React.FC<SpellBarProps> = ({
       hint: lang === 'en' ? 'Unlock Secret Vault' : 'Geheimtresor öffnen',
       active: false,
       color: 'hover:border-emerald-400 hover:text-emerald-300',
+    },
+    {
+      id: 'aguamenti',
+      name: 'Aguamenti',
+      icon: Droplets,
+      hint: lang === 'en' ? 'Cool Down & Refresh Focus' : 'Erfrischender Fokuszauber',
+      active: false,
+      color: 'hover:border-sky-400 hover:text-sky-300',
     },
     {
       id: 'patronum',

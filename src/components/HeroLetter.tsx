@@ -1,7 +1,8 @@
 import React from 'react';
-import { Scroll, Sparkles, MapPin, Mail, Phone, Linkedin, Download, Music, Feather, CheckCircle2 } from 'lucide-react';
+import { Scroll, Sparkles, MapPin, Mail, Phone, Linkedin, Download, Music, Feather, CheckCircle2, Briefcase, ShieldCheck } from 'lucide-react';
 import { RESUME_DATA, HouseTheme } from '../data/portfolioData';
 import { wizardAudio } from '../utils/audio';
+import { WizardPortrait } from './WizardPortrait';
 
 interface HeroLetterProps {
   lang: 'en' | 'de';
@@ -10,6 +11,7 @@ interface HeroLetterProps {
   onOpenOwlPost: () => void;
   onPlayMusic: () => void;
   isMusicPlaying: boolean;
+  onOpenTelcCert?: () => void;
 }
 
 export const HeroLetter: React.FC<HeroLetterProps> = ({
@@ -19,6 +21,7 @@ export const HeroLetter: React.FC<HeroLetterProps> = ({
   onOpenOwlPost,
   onPlayMusic,
   isMusicPlaying,
+  onOpenTelcCert,
 }) => {
   const p = RESUME_DATA.personal;
 
@@ -43,29 +46,65 @@ export const HeroLetter: React.FC<HeroLetterProps> = ({
           </span>
         </div>
 
-        {/* Professional Academic Letterhead Header */}
-        <div className="text-center border-b-2 border-[#bfa87a] pb-6 mb-8">
-          <div className="flex items-center justify-center gap-3 text-xl sm:text-2xl text-[#5c4a2a] mb-1 font-cinzel">
-            <h2 className="font-cinzel font-bold text-2xl sm:text-3xl lg:text-4xl tracking-wider text-[#1e1710]">
-              SAI SURYA ALLA
-            </h2>
-          </div>
-          <p className="text-xs sm:text-sm font-cinzel font-bold tracking-widest text-[#735728] uppercase mt-1">
-            {lang === 'en'
-              ? 'M.Sc. Artificial Intelligence for Industrial Applications • OTH Amberg-Weiden'
-              : 'M.Sc. Künstliche Intelligenz für industrielle Anwendungen • OTH Amberg-Weiden'}
-          </p>
-          <p className="text-xs font-parchment text-[#57442a] mt-1">
-            {lang === 'en'
-              ? 'Ostbayerische Technische Hochschule (OTH) Amberg-Weiden, Deutschland'
-              : 'Ostbayerische Technische Hochschule (OTH) Amberg-Weiden, Deutschland'}
-          </p>
-          <div className="flex justify-center items-center gap-3 mt-2 text-xs font-parchment text-[#6e5835] font-semibold">
-            <span>Amberg, Deutschland</span>
-            <span>•</span>
-            <span>{lang === 'en' ? 'Student at OTH Amberg-Weiden' : 'Student an der OTH Amberg-Weiden'}</span>
-            <span>•</span>
-            <span>{p.targetRole[lang]}</span>
+        {/* Professional Academic Letterhead Header with Wizard Portrait */}
+        <div className="border-b-2 border-[#bfa87a] pb-6 mb-8">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-center md:text-left">
+            {/* Clear Enchanted Photo Portrait */}
+            <div className="flex-shrink-0">
+              <WizardPortrait lang={lang} size="md" />
+            </div>
+
+            {/* Candidate Credentials */}
+            <div className="flex-1 text-center md:text-left">
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-1.5">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#10b981]/20 border border-[#10b981] text-[#065f46] text-xs font-cinzel font-bold">
+                  <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
+                  <span>{lang === 'en' ? 'Actively Seeking Working Student Role' : 'Sucht Werkstudentenstelle'}</span>
+                </span>
+                <span className="px-2 py-0.5 rounded-full bg-[#740001]/15 border border-[#740001]/40 text-[#740001] text-xs font-cinzel font-semibold">
+                  M.Sc. Artificial Intelligence
+                </span>
+              </div>
+
+              <h2 className="font-cinzel font-bold text-2xl sm:text-3xl lg:text-4xl tracking-wider text-[#1e1710]">
+                SAI SURYA ALLA
+              </h2>
+
+              <p className="text-xs sm:text-sm font-cinzel font-bold tracking-widest text-[#735728] uppercase mt-1">
+                {lang === 'en'
+                  ? 'M.Sc. Artificial Intelligence for Industrial Applications • OTH Amberg-Weiden'
+                  : 'M.Sc. Künstliche Intelligenz für industrielle Anwendungen • OTH Amberg-Weiden'}
+              </p>
+
+              <p className="text-xs font-parchment text-[#57442a] mt-1">
+                Ostbayerische Technische Hochschule (OTH) Amberg-Weiden, Deutschland
+              </p>
+
+              <div className="flex flex-wrap justify-center md:justify-start items-center gap-2 sm:gap-3 mt-2.5 text-xs font-parchment text-[#6e5835] font-semibold">
+                <span className="flex items-center gap-1">
+                  <MapPin className="w-3.5 h-3.5 text-[#735728]" />
+                  <span>Amberg, Deutschland</span>
+                </span>
+                <span>•</span>
+                <button
+                  onClick={() => {
+                    if (onOpenTelcCert) {
+                      wizardAudio.playWandSpark();
+                      onOpenTelcCert();
+                    }
+                  }}
+                  className="inline-flex items-center gap-1 text-[#740001] hover:text-[#9e0002] font-bold hover:underline cursor-pointer"
+                  title={lang === 'de' ? 'Offizielles telc A2-Zertifikat ansehen' : 'View official telc A2 certificate'}
+                >
+                  <span>🇩🇪</span>
+                  <span>{lang === 'de' ? 'Deutsch: telc A2 (B1 in Vorbereitung)' : 'German: telc A2 (Pursuing B1)'}</span>
+                </button>
+                <span>•</span>
+                <span className="text-[#065f46] font-bold">
+                  {lang === 'en' ? 'Available: 20h/wk (Immediate)' : 'Verfügbar: 20h/Woche (Sofort)'}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -89,21 +128,39 @@ export const HeroLetter: React.FC<HeroLetterProps> = ({
             {p.bio[lang]}
           </p>
 
-          {/* Highlight Target Role Box */}
-          <div className="my-6 p-4 rounded-xl border border-[#bfa87a] bg-[#ebe1c8]/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-inner">
+          {/* Highlight Target Role & Recruiter Callout Box */}
+          <div className="my-6 p-4 rounded-xl border-2 border-[#bfa87a] bg-gradient-to-r from-[#ebe1c8] via-[#f5edd9] to-[#ebe1c8] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md">
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-[#8f6d2b] flex-shrink-0 mt-0.5" />
+              <div className="p-2 rounded-xl bg-[#740001] text-[#ffd700] border border-[#d3a625] flex-shrink-0 mt-0.5">
+                <Briefcase className="w-5 h-5" />
+              </div>
               <div>
                 <span className="text-xs font-cinzel font-bold text-[#684e20] uppercase tracking-wider block">
-                  {lang === 'en' ? 'Target Position Seeking' : 'Angestrebte Position'}
+                  {lang === 'en' ? 'Target Position Seeking in Germany' : 'Gesuchte Werkstudentenstelle in Deutschland'}
                 </span>
-                <span className="text-sm sm:text-base font-cinzel font-semibold text-[#1f1910]">
-                  {p.targetRole[lang]}
+                <span className="text-sm sm:text-base font-cinzel font-bold text-[#1f1910] block">
+                  {lang === 'en' 
+                    ? 'Working Student: AI & Machine Learning • Full-Stack Software • IT Project Management • Cloud & DevOps'
+                    : 'Werkstudent: KI / Machine Learning • Full-Stack Software • IT-Projektmanagement • Cloud & DevOps'}
                 </span>
+                <p className="text-xs font-parchment text-[#5e4b2d] mt-1">
+                  {lang === 'en'
+                    ? '15–20h/week during semester, 40h/week during breaks • Valid German Student Visa (§ 16b)'
+                    : '15–20 Std./Woche im Semester, bis 40 Std./Woche in den Semesterferien • Gültiges deutsches Studienvisum (§ 16b)'}
+                </p>
               </div>
             </div>
-            <div className="text-xs font-parchment font-semibold text-[#664b18] px-3 py-1 rounded bg-[#dfcfad] border border-[#bfa87a] self-end sm:self-auto whitespace-nowrap">
-              {lang === 'en' ? 'Available in Germany' : 'Verfügbar in Deutschland'}
+            <div className="self-end sm:self-auto flex items-center gap-2">
+              <button
+                onClick={() => {
+                  const el = document.getElementById('recruiter-fast-track');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  wizardAudio.playWandSpark();
+                }}
+                className="px-3.5 py-1.5 rounded-lg bg-[#740001] hover:bg-[#8f0001] text-[#ffd700] border border-[#d3a625] font-cinzel text-xs font-bold shadow-sm transition-all hover:scale-105 cursor-pointer whitespace-nowrap"
+              >
+                <span>{lang === 'en' ? '⚡ Recruiter Portal' : '⚡ Zum Recruiter-Portal'}</span>
+              </button>
             </div>
           </div>
 
@@ -188,6 +245,20 @@ export const HeroLetter: React.FC<HeroLetterProps> = ({
 
           {/* Interactive Action Buttons */}
           <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
+            {/* Recruiter Fast-Track CTA */}
+            <button
+              id="hero-recruiter-fast-track-btn"
+              onClick={() => {
+                const el = document.getElementById('recruiter-fast-track');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                wizardAudio.playWandSpark();
+              }}
+              className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl font-cinzel text-xs font-bold bg-[#ffd700] text-[#141624] hover:bg-[#ffe359] border border-[#d4af37] shadow-md transition-all active:scale-95 cursor-pointer"
+            >
+              <Briefcase className="w-4 h-4 text-[#740001]" />
+              <span>{lang === 'en' ? 'Recruiter Fast-Track' : 'Recruiter-Portal'}</span>
+            </button>
+
             {/* Accio Resume CTA */}
             <button
               id="hero-accio-resume-btn"
@@ -200,6 +271,22 @@ export const HeroLetter: React.FC<HeroLetterProps> = ({
               <Scroll className="w-4 h-4" />
               <span>{lang === 'en' ? 'Accio Resume (CV)' : 'Accio Lebenslauf'}</span>
             </button>
+
+            {/* telc A2 Certificate CTA */}
+            {onOpenTelcCert && (
+              <button
+                id="hero-telc-cert-btn"
+                onClick={() => {
+                  wizardAudio.playWandSpark();
+                  onOpenTelcCert();
+                }}
+                className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl font-cinzel text-xs font-bold bg-[#1b261d] text-[#a7f3d0] hover:bg-[#253828] border border-[#059669]/60 shadow-md transition-all active:scale-95 cursor-pointer"
+                title={lang === 'de' ? 'Offizielles telc A2-Zertifikat ansehen' : 'View official telc A2 certificate'}
+              >
+                <span>🇩🇪</span>
+                <span>{lang === 'de' ? 'telc A2-Zertifikat' : 'telc A2 Certificate'}</span>
+              </button>
+            )}
 
             {/* Owl Post CTA */}
             <button
