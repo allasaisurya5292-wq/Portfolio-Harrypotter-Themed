@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Sparkles, Maximize2, X, ShieldCheck } from 'lucide-react';
 import { wizardAudio } from '../utils/audio';
+import { DEFAULT_PORTRAIT_BASE64 } from '../data/defaultPhoto';
 
 interface WizardPortraitProps {
   lang: 'en' | 'de';
@@ -15,37 +16,25 @@ export const WizardPortrait: React.FC<WizardPortraitProps> = ({
   size = 'md',
   showBadge = true,
 }) => {
-  const [imageSrc, setImageSrc] = useState<string>('/myimage.jpeg');
+  // Use embedded default portrait so Vercel and all deployments always display it instantly
+  const [imageSrc, setImageSrc] = useState<string>(DEFAULT_PORTRAIT_BASE64 || '/myimage.jpeg');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
-    // If the candidate photo was cached in localStorage, display it and sync to server once
     const saved = localStorage.getItem('sai_surya_custom_photo');
     if (saved) {
       setImageSrc(saved);
       setImageError(false);
-
-      // Background sync to server's public folder so all visitors see it by default
-      fetch('/api/photo-status')
-        .then((res) => res.json())
-        .then((data) => {
-          if (!data.exists) {
-            fetch('/api/save-photo', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ image: saved }),
-            }).catch(() => {});
-          }
-        })
-        .catch(() => {});
+    } else if (DEFAULT_PORTRAIT_BASE64) {
+      setImageSrc(DEFAULT_PORTRAIT_BASE64);
+      setImageError(false);
     }
   }, []);
 
   const handleImageError = () => {
-    // If /myimage.jpeg failed, try /profile.jpg or fallback
-    if (imageSrc === '/myimage.jpeg') {
-      setImageSrc('/profile.jpg');
+    if (imageSrc !== DEFAULT_PORTRAIT_BASE64 && DEFAULT_PORTRAIT_BASE64) {
+      setImageSrc(DEFAULT_PORTRAIT_BASE64);
     } else {
       setImageError(true);
     }
