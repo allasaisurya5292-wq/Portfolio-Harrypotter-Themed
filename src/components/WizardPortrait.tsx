@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Camera, Sparkles, Maximize2, X, CheckCircle2, ShieldCheck, Upload, Award } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Sparkles, Maximize2, X, ShieldCheck } from 'lucide-react';
 import { wizardAudio } from '../utils/audio';
 
 interface WizardPortraitProps {
@@ -18,14 +18,27 @@ export const WizardPortrait: React.FC<WizardPortraitProps> = ({
   const [imageSrc, setImageSrc] = useState<string>('/myimage.jpeg');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageError, setImageError] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // Check if user previously saved a custom uploaded photo in localStorage
+    // If the candidate photo was cached in localStorage, display it and sync to server once
     const saved = localStorage.getItem('sai_surya_custom_photo');
     if (saved) {
       setImageSrc(saved);
       setImageError(false);
+
+      // Background sync to server's public folder so all visitors see it by default
+      fetch('/api/photo-status')
+        .then((res) => res.json())
+        .then((data) => {
+          if (!data.exists) {
+            fetch('/api/save-photo', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ image: saved }),
+            }).catch(() => {});
+          }
+        })
+        .catch(() => {});
     }
   }, []);
 
@@ -35,23 +48,6 @@ export const WizardPortrait: React.FC<WizardPortraitProps> = ({
       setImageSrc('/profile.jpg');
     } else {
       setImageError(true);
-    }
-  };
-
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (ev) => {
-        const result = ev.target?.result as string;
-        if (result) {
-          setImageSrc(result);
-          setImageError(false);
-          localStorage.setItem('sai_surya_custom_photo', result);
-          wizardAudio.playWandSpark();
-        }
-      };
-      reader.readAsDataURL(file);
     }
   };
 
@@ -70,7 +66,6 @@ export const WizardPortrait: React.FC<WizardPortraitProps> = ({
         >
           {/* Inner Golden Rune Border */}
           <div className="w-full h-full rounded-xl overflow-hidden relative bg-[#131522] border-2 border-[#fcedad]/80 flex items-center justify-center">
-            
             {!imageError ? (
               <img
                 src={imageSrc}
@@ -80,12 +75,9 @@ export const WizardPortrait: React.FC<WizardPortraitProps> = ({
                 className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 filter brightness-105 contrast-105"
               />
             ) : (
-              /* High-fidelity Stylized Portrait matching his uploaded Google Cloud Summit photo */
+              /* Stylized Gold Monogram Portrait */
               <div className="w-full h-full bg-gradient-to-b from-[#181a2e] to-[#0d0e1a] relative flex flex-col items-center justify-center text-center p-4 overflow-hidden">
-                {/* Neon Google Cloud rainbow glow background */}
                 <div className="absolute inset-0 opacity-40 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-500 via-amber-400 to-red-500 filter blur-xl" />
-                
-                {/* SVG Silhouette with white shirt & summit lanyard */}
                 <div className="relative z-10 flex flex-col items-center">
                   <div className="w-20 h-20 rounded-full border-2 border-[#ffd700] shadow-[0_0_15px_rgba(255,215,0,0.5)] overflow-hidden bg-[#24283b] flex items-center justify-center">
                     <span className="text-3xl font-cinzel font-bold text-[#ffd700]">SA</span>
@@ -105,6 +97,7 @@ export const WizardPortrait: React.FC<WizardPortraitProps> = ({
 
             {/* Top-Right Quick Expand / View Icon */}
             <button
+              id="view-full-portrait-btn"
               onClick={(e) => {
                 e.stopPropagation();
                 wizardAudio.playQuillSound();
@@ -115,26 +108,6 @@ export const WizardPortrait: React.FC<WizardPortraitProps> = ({
             >
               <Maximize2 className="w-3.5 h-3.5" />
             </button>
-
-            {/* Bottom-Right Change / Upload Photo Button */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                fileInputRef.current?.click();
-              }}
-              className="absolute bottom-2 right-2 p-1.5 rounded-lg bg-[#740001]/80 hover:bg-[#8f0001] text-[#ffd700] border border-[#d3a625] backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all transform hover:scale-110 cursor-pointer shadow-md"
-              title={lang === 'en' ? 'Upload / Update Photo' : 'Foto aktualisieren / hochladen'}
-            >
-              <Camera className="w-3.5 h-3.5" />
-            </button>
-
-            <input
-              type="file"
-              ref={fileInputRef}
-              onChange={handleFileUpload}
-              accept="image/*"
-              className="hidden"
-            />
           </div>
 
           {/* Corner Ornamental Flourishes */}
@@ -165,6 +138,7 @@ export const WizardPortrait: React.FC<WizardPortraitProps> = ({
                 </h4>
               </div>
               <button
+                id="close-portrait-modal-btn"
                 onClick={() => setIsModalOpen(false)}
                 className="p-1 rounded-lg bg-[#22263a] hover:bg-[#740001] text-[#ffd700] transition-all cursor-pointer"
               >
@@ -180,7 +154,7 @@ export const WizardPortrait: React.FC<WizardPortraitProps> = ({
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-2 text-xs font-parchment text-[#c4b59d]">
+            <div className="flex items-center justify-center pt-2 text-xs font-parchment text-[#c4b59d]">
               <div className="flex items-center gap-1.5 text-[#34d399]">
                 <ShieldCheck className="w-4 h-4" />
                 <span>
@@ -189,13 +163,6 @@ export const WizardPortrait: React.FC<WizardPortraitProps> = ({
                     : 'Google Cloud Summit • M.Sc. KI-Student an der OTH Amberg-Weiden'}
                 </span>
               </div>
-              <button
-                onClick={() => fileInputRef.current?.click()}
-                className="inline-flex items-center gap-1 px-3 py-1 rounded bg-[#2a2e45] hover:bg-[#383d5c] text-[#ffd700] border border-[#d4af37]/50 text-[11px] font-cinzel font-semibold cursor-pointer transition-all"
-              >
-                <Upload className="w-3 h-3" />
-                <span>{lang === 'en' ? 'Change Photo' : 'Foto ändern'}</span>
-              </button>
             </div>
           </div>
         </div>
